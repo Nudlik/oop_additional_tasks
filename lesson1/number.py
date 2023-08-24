@@ -12,19 +12,20 @@
 `.substract(<значение>)` вычитает указанное число из value
 """
 
+
 class Number:
 
-    def __init__(self, value):
-        ...
+    def __init__(self, value: int):
+        self.value: int = value
 
-    def ...(self):
-        ...
+    def get(self):
+        return self.value
 
-    def ...:
-        ...
+    def add(self, num: int):
+        self.value += num
 
-    def ...:
-        ...
+    def substract(self, num: int):
+        self.value -= num
 
 
 n = Number(7)
