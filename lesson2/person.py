@@ -8,10 +8,26 @@
 - is_adult(cls, age): статический метод, принимающий возраст человека и возвращающий True,
 если он старше 18 лет, и False в противном случае
 """
+from datetime import date
 
 
 class Person:
-    pass
+
+    def __init__(self, name: str, age: int):
+        self.name: str = name
+        self.age: int = age
+
+    def display(self):
+        print(f"{self.name} is {self.age} years old")
+
+    @classmethod
+    def from_birth_year(cls, name: str, birth_year: int):
+        age = date.today().year - birth_year
+        return cls(name, age)
+
+    @staticmethod
+    def is_adult(age: int):
+        return age > 18
 
 
 person1 = Person("John", 28)
