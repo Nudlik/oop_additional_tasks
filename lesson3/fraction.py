@@ -10,7 +10,35 @@
 
 
 class Fraction:
-    pass
+
+    def __init__(self, numerator: int, denominator: int):
+        self.numerator: int = numerator
+        self.denominator: int = denominator
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.numerator}, {self.denominator})'
+
+    def __str__(self):
+        return f'{self.numerator}/{self.denominator}'
+
+    def __add__(self, other: 'Fraction') -> 'Fraction':
+        if not isinstance(other, Fraction):
+            raise TypeError('other must be Fraction')
+
+        res = Fraction(self.numerator * other.denominator + other.numerator * self.denominator,
+                       self.denominator * other.denominator)  # 10 / 8
+
+        divider = self.gcd(res.numerator, res.denominator)
+
+        res = Fraction(res.numerator // divider, res.denominator // divider)
+        return res
+
+    @staticmethod
+    def gcd(a: int, b: int) -> int:
+        """ Наибольший общий делитель """
+        while b:
+            a, b = b, a % b
+        return a
 
 
 fraction1 = Fraction(1, 2)
