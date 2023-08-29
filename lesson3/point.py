@@ -9,7 +9,22 @@
 
 
 class Point:
-    pass
+
+    def __init__(self, x: int, y: int):
+        self.x: int = x
+        self.y: int = y
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self.x}, {self.y})'
+
+    def __str__(self) -> str:
+        return f'({self.x}, {self.y})'
+
+    def __add__(self, other: 'Point') -> 'Point':
+        if not isinstance(other, Point):
+            raise TypeError('other must be Point')
+
+        return Point(self.x + other.x, self.y + other.y)
 
 
 point1 = Point(1, 2)
