@@ -13,7 +13,24 @@
 
 
 class Person:
-    pass
+    def __init__(self, name: str, age: int):
+        self.name: str = name
+        self.age: int = age
+
+    def get_name(self):
+        return self.name
+
+    def get_age(self):
+        return self.age
+
+
+class Student(Person):
+    def __init__(self, name: str, age: int, major: str):
+        super().__init__(name, age)
+        self.major: str = major
+
+    def get_major(self):
+        return self.major
 
 
 person = Person("Иван", 25)
