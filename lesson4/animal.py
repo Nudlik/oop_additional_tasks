@@ -14,8 +14,9 @@
 """
 
 
-class Aminal:
-    pass
+Animal = type('Animal', (), {'speak': lambda self: print('?'), '__init__': lambda self, name: setattr(self, 'name', name)})
+Dog = type('Dog', (Animal,), {'speak': lambda self: print('Woof!')})
+Cat = type('Cat', (Animal,), {'speak': lambda self: print('Meow!')})
 
 
 animal = Animal("Animal")
