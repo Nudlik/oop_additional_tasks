@@ -14,7 +14,28 @@
 
 
 class Car:
-    pass
+    def __init__(self, make: str, model: str, year: int):
+        self.make: str = make
+        self.model: str = model
+        self.year: int = year
+
+    def get_make(self):
+        return self.make
+
+    def get_model(self):
+        return self.model
+
+    def get_year(self):
+        return self.year
+
+
+class ElectricCar(Car):
+    def __init__(self, make: str, model: str, year: int, battery_size: int):
+        super().__init__(make, model, year)
+        self.battery_size: int = battery_size
+
+    def get_battery_size(self):
+        return self.battery_size
 
 
 car = Car("Tesla", "Model S", 2022)
